@@ -1,0 +1,14 @@
+{
+  "applicationNodes": [],
+  "programNodes": [],
+  "smartSkills": [],
+  "operatorScreens": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "samplescreen.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-samplescreen-samplescreen",
+      "configurationComponentTagName": "ur-sampleopscreen-opscreenconfig"
+    }
+  ]
+}

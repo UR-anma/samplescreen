@@ -1,0 +1,10 @@
+{
+  "application": {
+    "nodes": {
+      "ur-samplescreen-samplescreen": {
+        "title": "Samplescreen",
+        "supportiveText": "Samplescreen - Supportive Text"
+      }
+    }
+  }
+}

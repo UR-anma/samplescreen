@@ -1,0 +1,69 @@
+<div class="component">
+    <div class="ur-column ur-justify-center ur-align-center"
+        style="height:60px; width:1120px; margin: 10px; background-color: var(--color-background-level-03); box-shadow: var(--shadow-02); border-radius: var(--border-radius-medium);">
+        <ur-heading type="h1" size="'medium'">Custom operator screen example</ur-heading>
+    </div>
+    <div class="ur-row"
+        style="height:180px; width:1120px; margin: 10px; background-color: var(--color-background-level-03); box-shadow: var(--shadow-02); border-radius: var(--border-radius-medium);">
+        <div class="ur-column">
+            <ur-input label="Password" (change)="checkPassword($event)"
+                [value]="operatorScreen.parameters.tentativePassword" style="margin: 10px; margin-bottom: 0px;"
+                showPassword="'true"></ur-input>
+            <div class="ur-row" style="margin: 10px; margin-top: 5px;">
+                <div class="ur-column" style="margin-right: 5px; margin-left: 5px;">
+                    <ur-label [label]="'Ticks/meter'" size="'large'"></ur-label>
+                    <ur-input [disabled]="!passwordOk"></ur-input>
+                </div>
+                <div class="ur-column" style="margin-right: 5px; margin-left: 5px;">
+                    <ur-label [label]="'Start sensor'" size="'large'" style="padding-bottom: 4px;"></ur-label>
+                    <ur-dropdown numberOfOptionsVisible="2"
+                        [options]="['DI0', 'DI1', 'DI2', 'DI3', 'DI4', 'DI5', 'DI6', 'DI7']" [disabled]="!passwordOk"
+                        (selectionChange)="setStartSensor($event)" [selectedOption]="startDi"></ur-dropdown>
+                </div>
+                <div class="ur-column" style="margin-right: 5px; margin-left: 5px;">
+                    <ur-label [label]="'End sensor'" size="'large'" style="padding-bottom: 4px;"></ur-label>
+                    <ur-dropdown numberOfOptionsVisible="2"
+                        [options]="['DI0', 'DI1', 'DI2', 'DI3', 'DI4', 'DI5', 'DI6', 'DI7']" [disabled]="!passwordOk"
+                        (selectionChange)="setEndSensor($event)" [selectedOption]="endDi"></ur-dropdown>
+                </div>
+                <div class="ur-column" style="margin-right: 5px; margin-left: 5px;">
+                    <ur-label [label]="'Power'" size="'large'" style="padding-bottom: 4px;"></ur-label>
+                    <ur-dropdown numberOfOptionsVisible="2"
+                        [options]="['DO0', 'DO1', 'DO2', 'DO3', 'DO4', 'DO5', 'DO6', 'DO7']" [disabled]="!passwordOk"
+                        (selectionChange)="setPowerDo($event)" [selectedOption]="powerDo"></ur-dropdown>
+                </div>
+                <div class="ur-column" style="margin-right: 5px; margin-left: 5px;">
+                    <ur-label [label]="'Speed'" size="'large'" style="padding-bottom: 4px;"></ur-label>
+                    <ur-dropdown numberOfOptionsVisible="2" [options]="['AO0', 'AO1']" [disabled]="!passwordOk"
+                        (selectionChange)="setSpeedAo($event)" [selectedOption]="speedAo"></ur-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ur-column ur-justify-space-evenly"
+        style="height:400px; width:1125px; margin: 10px; background-color: var(--color-background-level-03); box-shadow: var(--shadow-02); border-radius: var(--border-radius-medium);">
+        <div class="ur-row ur-justify-center ur-align-center">
+            <ur-digital-signal-display [value]="startDiStatus" isInput="true"
+                [signalID]="startDi"></ur-digital-signal-display>
+            <div style="width:300px;"></div>
+            <ur-digital-signal-display [value]="endDiStatus" isInput="true"
+                [signalID]="endDi"></ur-digital-signal-display>
+        </div>
+        <div class="ur-row ur-justify-space-evenly ur-align-center">
+            <ur-button [icon]="'waypoint'" [size]="'large'" (clicked)="setStartPoint()">Start point</ur-button>
+            <img [src]=" imgPath" class="ConveyorImg" style="height: 250px; width:700px">
+            <ur-button [icon]="'waypoint'" [size]="'large'" (clicked)="setEndPoint()">End point</ur-button>
+        </div>
+        <div class="ur-row ur-justify-center ur-align-center">
+            <ur-label label="Power"></ur-label>
+            <div style="width:10px;"></div>
+            <ur-toggle-switch [toggled]="powerDoStatus" [disabled]="powerDoStatusDisabled"
+                (handleToggle)="setPowerService($event)"></ur-toggle-switch>
+            <div style="width:50px;"></div>
+            <ur-label label="Speed"></ur-label>
+            <div style="width:10px;"></div>
+            <ur-slider [level]="speedAoStatus" style="height:60px; width:300px; align-content: center;"
+                (change)="setSpeedService($event)"></ur-slider>
+        </div>
+    </div>
+</div>

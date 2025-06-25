@@ -1,0 +1,27 @@
+metadata:
+  vendorID: "ur"
+  urcapID: "samplescreen"
+  vendorName: "ur"
+  urcapName: "samplescreen"
+  version: 1.4.0
+  contactInfo: anma@universal-robots.com
+  description: Sample urCap to showcase operator screen customization in PolyscopeX
+  copyright: Copyright (c) 2009-2025 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+    - id: "samplescreen-frontend"
+      folder: "samplescreen-frontend"
+  containers:
+    - id: "samplescreen-backend"
+      image: "samplescreen-backend:latest"
+      ingress:
+        - id: secondary-interface-api
+          containerPort: 55510
+          protocol: websocket
+          proxyUrl: /
+      services:
+        - service: urcontrol-secondary
+      mounts:
+        - mount: "persistent:/home/logs"
+          access: "rw"
